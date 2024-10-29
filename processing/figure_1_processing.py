@@ -89,7 +89,7 @@ ax1_to_plot['x'] = x
 ax1_to_plot['u_T_0'] = u0['g']
 ax1_to_plot['u_T_300'] = u300['g']
 ax1_to_plot['u_T_600'] = u600['g']
-np.save('fig1-ax1-processed.npy', ax1_to_plot)
+np.save('processed_data/fig1-ax1-processed.npy', ax1_to_plot)
 
 ##### processing for ax2 #####
 ax2_to_plot = {}
@@ -114,4 +114,4 @@ ax2_to_plot['L2_T_0'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx0])
 ax2_to_plot['L2_T_300'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx300])
 ax2_to_plot['L2_T_600'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx600])
 
-np.save('fig1-ax2-processed.npy', ax2_to_plot)
+np.save('processed_data/fig1-ax2-processed.npy', ax2_to_plot)

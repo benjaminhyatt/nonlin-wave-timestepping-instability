@@ -17,8 +17,8 @@ colors[basis].append(matplotlib.colors.to_rgba('#dfc27d'))
 colors[basis].append(matplotlib.colors.to_rgba('#a6611a'))
 
 ##### load in processed data for plotting ##### 
-ax1_to_plot = np.load('fig1-ax1-processed.npy', allow_pickle = True)[()]
-ax2_to_plot = np.load('fig1-ax2-processed.npy', allow_pickle = True)[()]
+ax1_to_plot = np.load('processed_data/fig1-ax1-processed.npy', allow_pickle = True)[()]
+ax2_to_plot = np.load('processed_data/fig1-ax2-processed.npy', allow_pickle = True)[()]
 
 ##### construct fig #####
 plt.rcParams['font.family'] = 'serif'

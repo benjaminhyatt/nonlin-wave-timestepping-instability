@@ -1,3 +1,10 @@
+"""
+Processing script for Figure 1
+
+Reads in IVP data from the current directory and outputs fig1-ax1-processed.npy
+and fig1-ax2-processed.npy inside of processed_data folder for later plotting
+"""
+
 import numpy as np
 import dedalus.public as d3
 import h5py
@@ -114,4 +121,5 @@ ax2_to_plot['L2_T_0'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx0])
 ax2_to_plot['L2_T_300'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx300])
 ax2_to_plot['L2_T_600'] = np.sqrt(data_dict[basis][N]["int_u_sq_f"][idx600])
 
+# output processed data
 np.save('processed_data/fig1-ax2-processed.npy', ax2_to_plot)

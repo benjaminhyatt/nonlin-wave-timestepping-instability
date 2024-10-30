@@ -1,3 +1,10 @@
+"""
+Plotting script for Figure 1
+
+Reads in processed data files fig1-ax1-processed.npy and fig1-ax2-processed.npy
+from processed_data folder (which should be within current working directory)
+
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib

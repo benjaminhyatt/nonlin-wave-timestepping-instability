@@ -1,7 +1,7 @@
 """
 Processing script for Figure 2
 
-Reads in IVP and EVP data from the current directory and outputs (...) for later plotting.
+Reads in IVP and EVP data from the current directory and outputs fig2-processed.npy for later plotting.
 
 Options from command line: 
     i (sys.argv[1]) index array of dispersion parameter values (alpha)
@@ -47,7 +47,7 @@ def eval_to_rate(eig, t_step):
     rate = np.log(np.abs(eig))/t_step
     return rate
 
-# load ivp results (e.g., IVP under a real Fourier basis) 
+# For loading IVP results (e.g., IVP under a real Fourier basis) 
 # (NOTE: for this figure, we loaded in data that was saved at an exponentially growing cadence 
 #  such that early times were sampled more frequently) 
 def load_data(alphas, dts, scheme):
@@ -76,7 +76,8 @@ flags = {} # we use flags to keep track of which (alpha, t_step) were/were not s
 for scheme in schemes:
     # load IVP data
     data_dict, flags_out = load_data(alphas, dts, scheme)
-    # load EVP data
+    # load EVP data 
+    print("Reading in eigenvalues assuming only the largest eigenvalues were retained")
     evals = np.load('nomres_evals_evecs/evals_' + scheme + '_sparse_survey.npy')
 
     # ivp

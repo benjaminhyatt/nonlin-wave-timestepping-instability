@@ -3,7 +3,6 @@ Plotting script for Figure 2
 
 Reads in processed data file fig2-processed.npy
 from processed_data folder (which should be within current working directory)
-
 """
 
 import numpy as np

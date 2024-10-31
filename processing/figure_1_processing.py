@@ -32,14 +32,12 @@ for basis in bases:
             file_in = h5py.File(output_name_f + '/' + output_name_f + '_s1.h5', 'r+')
             data_dict[basis][N]["ts_f"] = np.array(file_in['scales/sim_time'])
             data_dict[basis][N]["u_f"] = np.array(file_in['tasks']['u_f'])
-            data_dict[basis][N]["max_u_f"] = np.max(np.array(file_in['tasks']['u_f']), axis = 1)
             data_dict[basis][N]["int_u_sq_f"] = np.array(file_in['tasks']['int_u_f_sq'])
         if basis == 'c':
             output_name_c = f'{scheme}_output_c_{i}_{j}_{N}'
             file_in = h5py.File(output_name_c + '/' + output_name_c + '_s1.h5', 'r+')
             data_dict[basis][N]["ts_c"] = np.array(file_in['scales/sim_time'])
             data_dict[basis][N]["u_c"] = np.array(file_in['tasks']['u_c'])
-            data_dict[basis][N]["max_u_c"] = np.max(np.array(file_in['tasks']['u_c']), axis = 1)
             data_dict[basis][N]["int_u_sq_c"] = np.array(file_in['tasks']['int_u_c_sq'])
 
 
@@ -63,8 +61,6 @@ us_300 = us[idx300,:]
 idx600 = np.where(np.cumsum(deltats * cs[:-1])/L >= 600)[0][0] 
 ts_600 = ts[idx600]
 us_600 = us[idx600,:]
-
-#print("T_0", ts_0, "T_300", ts_300,"T_600", ts_600, "T_B", ts[-1])
 
 # represent in complex fourier
 xcoord = d3.Coordinate('x')

@@ -15,9 +15,6 @@ import h5py
 import logging
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger(__name__)
-# for integrating solvability condition with finite ansatz case
-from solvability_expr_final import *
-from kdv_integrate_finite_final import integrate_finite
 
 basis = 'f' # e.g., in order to compare predictions to real Fourier IVP
 ansatz = 'finite' # e.g., L = 10, the other option being 'infinite' (L -> infty)

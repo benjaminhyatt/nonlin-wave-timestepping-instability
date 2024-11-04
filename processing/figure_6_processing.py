@@ -16,11 +16,8 @@ import h5py
 import logging
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger(__name__)
-# for integrating solvability condition with finite ansatz case
-from solvability_expr_final import *
-from kdv_integrate_finite_final import integrate_finite
 
-df = 0.75 # decay fraction in L2 norm 
+df = 0.90 # decay fraction in L2 norm 
 
 basis = 'f' # e.g., in order to compare predictions to real Fourier IVP
 ansatz = 'finite' # e.g., L = 10, the other option being 'infinite' (L -> infty)
@@ -67,18 +64,19 @@ def load_data(alphas, dts, scheme, restart_flags):
                     data_dict[i][j]["f_flag"] = 0 
     return data_dict
 
-# returns the KdV soliton L2 norm predicted by either ansatz 
+# returns the (squared) KdV soliton L2 norm predicted by either ansatz 
 def tanh(z):
     return np.tanh(z)
 def sech(z):
     return np.cosh(z)**(-1)
 def l2(c, alpha, L, ansatz):
     if ansatz == "infinite":
-        return 24*c**(3/2)*alpha**(1/2)
+        l2_sq = 24*c**(3/2)*alpha**(1/2)
     if ansatz == "finite":
         arg = c**(1/2) * (L/4) * alpha**(-1/2)
         arg0 = c0**(1/2) * (L/4) * alpha**(-1/2)
-        return (12/L)*(c**(3/2) * L * alpha**(1/2) * (2 + sech(arg)**2) * tanh(arg) - 12*c*alpha*tanh(arg)**2 + 12*c0*alpha*tanh(arg0)**2)
+        l2_sq = (12/L)*(c**(3/2) * L * alpha**(1/2) * (2 + sech(arg)**2) * tanh(arg) - 12*c*alpha*tanh(arg)**2 + 12*c0*alpha*tanh(arg0)**2)
+    return np.sqrt(l2_sq)
 
 # returns value of epsilon
 def epsilon(alpha, t_step, c, L): 
@@ -156,7 +154,7 @@ elif ansatz == 'finite':
             t_pred = data_fin[i][j]['ts']
             c_pred = data_fin[i][j]['c']
             l2_pred = l2(c_pred, alpha, L, 'finite')
-            l20 = l2(0.5, alpha, L, ansatz)
+            l20 = l2(c0, alpha, L, ansatz)
             t_b_predictions[i, j] = interp_t_l2(t_pred, l2_pred, l20, df)
 
 # IVP 
@@ -169,8 +167,8 @@ for i, alpha in enumerate(alphas):
     t_ends_a_pred = []
     for j, t_step in enumerate(dts):
         if basis == 'f' and data_dict[i][j]["f_flag"]:
-            l20 = l2(0.5, alpha, L, ansatz)
-            t_end = interp_t_l2(data_dict[i][j]["ts_f"], data_dict[i][j]["int_u_sq_f"], l20, df)
+            l20 = l2(c0, alpha, L, ansatz)
+            t_end = interp_t_l2(data_dict[i][j]["ts_f"], np.sqrt(data_dict[i][j]["int_u_sq_f"]), l20, df)
             eps_plot.append(eps[i, j])
             t_ends_a.append(alpha**(-1/2)*t_end)
             t_ends_a_pred.append(alpha**(-1/2)*t_b_predictions[i, j])

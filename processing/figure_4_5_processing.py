@@ -8,7 +8,7 @@ already been computed using ms_integrate_predictions.py**
 
 Reads in IVP data from the current directory and 
 multiple scales analysis predictions from the multiple scales analysis 
-(stored in processed_data) and outputs fig4-processed.npy for later plotting.
+(stored in processed_data) and outputs fig45-processed.npy for later plotting.
 """
 import numpy as np
 import h5py
@@ -39,7 +39,6 @@ def load_data(alphas, dts, scheme):
                 output_name_f = scheme + f'_output_f_{i}_{j}'
                 file_in = h5py.File(scheme + "_outputs_N_512_f/" + output_name_f + '/' + output_name_f + '_s1.h5', 'r+')
                 data_dict[i][j]["ts_f"] = np.array(file_in['scales/sim_time'])
-                data_dict[i][j]["int_u_sq_f"] = np.array(file_in['tasks']['int_u_f_sq'])
                 data_dict[i][j]["f_flag"] = 1
             except:
                 data_dict[i][j]["f_flag"] = 0
@@ -80,7 +79,6 @@ def c_infs(t, c0, t_step, alpha, scheme):
     else:
         print("Not a valid scheme")
         return None
-
 
 # compute epsilon over parameters surveyed
 eps = np.zeros((alphas.shape[0], dts.shape[0]))

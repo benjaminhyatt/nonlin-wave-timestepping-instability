@@ -7,8 +7,8 @@ processed by process_evals.py to sort-out/reject under-resolved modes.
 Outputs fig10-processed.npy for later plotting.
 
 Options: 
-    i (Line 14) index array of dispersion parameter values (alpha)
-    j (Line 14) index into array of timestep sizes
+    i (Line 17) index array of dispersion parameter values (alpha)
+    j (Line 17) index into array of timestep sizes
 """
 import numpy as np
 

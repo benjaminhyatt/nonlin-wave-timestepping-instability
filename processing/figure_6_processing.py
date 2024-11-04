@@ -64,7 +64,7 @@ def load_data(alphas, dts, scheme, restart_flags):
                     data_dict[i][j]["f_flag"] = 0 
     return data_dict
 
-# returns the (squared) KdV soliton L2 norm predicted by either ansatz 
+# returns the KdV soliton L2 norm predicted by either ansatz 
 def tanh(z):
     return np.tanh(z)
 def sech(z):

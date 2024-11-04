@@ -1,11 +1,17 @@
 """
 This script contains the function definitions need to solve for the 
 von Neumann eigenmodes corresponding to linear perturbations of a 
-KdV soliton under several IMEX schemes. Following the function definitions, 
-we also provide an example of us calling one of the functions to perform a
-parameter survey of SBDF1. For higher order schemes, if all that is required
-is to find the fastest growing modes, we recommend using sparse methods--the
-dense methods are available for when the full spectrum is desired. 
+KdV soliton under several IMEX schemes. 
+
+* After using this script to perform eigenvalue problems at MULTIPLE 
+resolutions (N), we implement the procedure shown in .py to decide which
+eigenvalues are well-resolved. 
+
+Following the function definitions, we also provide an example of us calling 
+one of the functions to perform a parameter survey of SBDF1. 
+(For higher order schemes, if all that is required is to find the fastest 
+growing modes, we recommend using sparse methods--the dense methods are 
+available for when the full spectrum is desired.) 
 
 We use Dedalus** to solve each eigenvalue problem (EVP) which implements
 both dense and sparse methods (both of which we include here). 

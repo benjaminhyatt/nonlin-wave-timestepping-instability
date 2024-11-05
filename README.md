@@ -3,11 +3,12 @@
 This repository contains scripts used to generate the data and figures presented in an upcoming manuscript "Multiple scales analysis of a nonlinear timestepping instability in simulations of solitons" by Hyatt et al. Below is a description of the contents of the repository: 
 
 # Folders:
-## `processing`
-
 ## `processed_data`
 
 ## `plotting`
+
+## `processing`
+This folder consists of scripts used to process data produced by any of the initial value problems, eigenvalue problems, and/or multiple scales analysis predictions described in this work. Due to the large volume of data produced in this work, we provide the scripts to generate your own data (see descriptions below). 
 
 # Scripts in the main directory:  
 ## Soliton propagation initial value problems

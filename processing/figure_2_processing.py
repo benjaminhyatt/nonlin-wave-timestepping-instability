@@ -78,7 +78,7 @@ for scheme in schemes:
     data_dict, flags_out = load_data(alphas, dts, scheme)
     # load EVP data 
     print("Reading in eigenvalues assuming only the largest eigenvalues were retained")
-    evals = np.load('nomres_evals_evecs/evals_' + scheme + '_sparse_survey.npy')
+    evals = np.load('evals_' + scheme + '_sparse_survey.npy')
 
     # ivp
     if not flags_out[i][j]:

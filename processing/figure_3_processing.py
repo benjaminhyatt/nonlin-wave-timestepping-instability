@@ -102,7 +102,7 @@ for scheme in schemes:
     
     # Load EVP data
     print("Reading in eigenvalues assuming only the largest eigenvalues were retained")
-    evals = np.load('nomres_evals_evecs/evals_' + scheme + '_dense_survey.npy')
+    evals = np.load('evals_' + scheme + '_dense_survey.npy')
 
     # Calculate errors and fit rates, and also convert eigenvalues to rates
     for i, alpha in enumerate(alphas):

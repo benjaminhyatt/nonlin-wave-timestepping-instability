@@ -4,8 +4,10 @@ This repository contains scripts used to generate the data and figures presented
 
 # Folders:
 ## `processed_data`
+This folder consists of data that has been processed (using the scripts inside of `processing`) and is ready to be plotted. We provide the processed data rather than raw data due to the large volumes of raw data used in this work. 
 
 ## `plotting`
+This folder consists of scripts that read in data from `processed_data` and output figures in `.eps` format. Scripts should be run from the main directory such that the `processed_data` folder is visible. 
 
 ## `processing`
 This folder consists of scripts used to process data produced by any of the initial value problems, eigenvalue problems, and/or multiple scales analysis predictions described in this work. Due to the large volume of data produced in this work, we provide the scripts to generate your own data (see descriptions below). 

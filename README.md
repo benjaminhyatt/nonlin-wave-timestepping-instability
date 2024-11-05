@@ -2,16 +2,6 @@
 
 This repository contains scripts used to generate the data and figures presented in an upcoming manuscript "Multiple scales analysis of a nonlinear timestepping instability in simulations of solitons" by Hyatt et al. Below is a description of the contents of the repository: 
 
-# Folders:
-## `processed_data`
-This folder consists of data that has been processed (using the scripts inside of `processing`) and is ready to be plotted. We provide the processed data rather than raw data due to the large volumes of raw data used in this work. 
-
-## `plotting`
-This folder consists of scripts that read in data from `processed_data` and output figures in `.eps` format. Scripts should be run from the main directory such that the `processed_data` folder is visible. 
-
-## `processing`
-This folder consists of scripts used to process data produced by any of the initial value problems, eigenvalue problems, and/or multiple scales analysis predictions described in this work. Due to the large volume of data produced in this work, we provide the scripts to generate your own data (see descriptions below). 
-
 # Scripts in the main directory:  
 ## Soliton propagation initial value problems
 `kdv_ivp.py` implements the IVP class in Dedalus version 3 (see [https://github.com/DedalusProject/dedalus](https://github.com/DedalusProject/dedalus)) to propagate solitons on a periodic interval using IMEX timestepping schemes to inspect their (in)stability. When the scheme is unstable we run the simulation all the way through blow-up, whereas if the scheme is stable (i.e., RK443) we specify a late stop time. Each simulation can be configured to yield a variety of outputs, such as snapshots of the solution and its (squared) L2 norm versus time. The cadence of outputs can be adjusted depending on the time scale of the simulation. 
@@ -22,3 +12,13 @@ NOTE: we also provide `solvers.py` which modifies the script of the same name fo
 
 ## Multiple scales analysis: numerical integration of the nontrivial solvability conditions
 `ms_integrate_predictions.py` initiates the solution of the nontrivial solvability conditions based on those derived using the multiple scales framework developed in this work. This script relies on `solvability_expr_final.py` (which stores the nonlinear ODEs for the effective soliton parameter c) and `kdv_integrate_finite_final.py` which uses the `scipy.integrate` library to numerically integrate the ODEs. 
+
+# Folders:
+## `processed_data`
+This folder consists of data that has been processed (using the scripts inside of `processing`) and is ready to be plotted. We provide the processed data rather than raw data due to the large volumes of raw data used in this work. 
+
+## `plotting`
+This folder consists of scripts that read in data from `processed_data` and output figures in `.eps` format. Scripts should be run from the main directory such that the `processed_data` folder is visible. 
+
+## `processing`
+This folder consists of scripts used to process data produced by any of the initial value problems, eigenvalue problems, and/or multiple scales analysis predictions described in this work. Due to the large volume of data produced in this work, we provide the scripts to generate your own data (see descriptions below). 
